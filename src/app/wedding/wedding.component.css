@@ -11,8 +11,10 @@ body {
     transform: translate(-50%, -50%);
 }
 #sub-footer{
+    padding-top: 5px;
     height: 30px;
     background-color: rgb(39, 39, 39);
+    text-align: center;
 }
 #really-long-div {
     height: 1800px;
@@ -26,4 +28,8 @@ body {
 
 #cover-img {
     max-width: 100%;
+}
+
+#countdown {
+    font-size: 12px;
 }

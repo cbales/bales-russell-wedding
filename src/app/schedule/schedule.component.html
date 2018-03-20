@@ -1,9 +1,29 @@
 <div id="details-section">
-    <ol>
-        <li>Darin and I get married</li>
-        <li>You eat some food</li>
-        <li>We play board games and hang out</li>
-        <li>Everyone gets cake and booze</li>
-        <li>We all go home</li>
-    </ol>
+    <div uk-grid class="uk-grid-divider">
+        <div class="uk-width-1-2 uk-text-right">
+            <div class="time">5:00pm</div>
+        </div>
+        <div class="uk-width-1-2">
+            <div class="schedule-item">
+                <p class="title uk-text-lead">Ceremony</p>
+                <p class="location">Buffalo Wild Wings</p>
+                <p class="address">1320 P. St.</p>
+                <button class="uk-button uk-button-secondary">Map</button>
+            </div>
+        </div>
+
+        <div class="uk-width-1-2 uk-text-right">
+                <div class="time">6:00pm</div>
+            </div>
+            <div class="uk-width-1-2">
+                <div class="schedule-item">
+                    <p class="title uk-text-lead">Reception</p>
+                    <p class="location">Chez Hay</p>
+                    <p class="address">440 S 11th St.</p>
+                    <button class="uk-button uk-button-secondary" id="reception-map-button">Map</button>
+
+                    <iframe id="reception-map" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Chez%20Hay&key=AIzaSyDzDdM6BiMm5B5i1jZ3mGx92yDCbzo8wXQ" allowfullscreen></iframe>
+                </div>
+            </div>
+    </div>
 </div>

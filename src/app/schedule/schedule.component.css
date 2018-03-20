@@ -1,0 +1,22 @@
+#details-section {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#reception-map {
+    display:none;
+    padding-top: 4px;
+}
+
+.schedule-item p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.schedule-item .title {
+    margin-top: -5px;
+}
+.schedule-item button {
+    margin-top : 10px;
+}
