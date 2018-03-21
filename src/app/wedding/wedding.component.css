@@ -33,3 +33,11 @@ body {
 #countdown {
     font-size: 12px;
 }
+.content-wrapper {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#footer {
+    margin-top: 200px;
+}
