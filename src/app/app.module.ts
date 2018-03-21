@@ -8,6 +8,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
+import { RegistryComponent } from './registry/registry.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RsvpComponent } from './rsvp/rsvp.component';
     ScheduleComponent,
     GalleryComponent,
     NavigationComponent,
-    RsvpComponent
+    RsvpComponent,
+    RegistryComponent
   ],
   imports: [
     BrowserModule

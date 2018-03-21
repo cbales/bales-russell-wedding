@@ -1,0 +1,7 @@
+#registry-section img {
+    height: 140px;
+    padding:20px;
+}
+#registry-section .uk-card-secondary {
+    background-color: rgb(61,61,61);
+}
