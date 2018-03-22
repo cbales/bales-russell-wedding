@@ -18,4 +18,22 @@ $(document).on("click", "#send", function(){
               }, 1200);
           }, 1500);
       }, 800);
+
+    // Send the form
+    var user = {
+        firstName: document.getElementById("firstName").value, 
+        lastName: document.getElementById("lastName").value, 
+        mealOption: document.getElementById("mealOption").value, 
+        dietaryRestrictions: document.getElementById("dietaryRestrictions").value
+    };
+
+    $.post("/sendRsvp", user)
+        .success(function(res) {
+        UIkit.notification("RSVP sent!", "primary");
+        //Clear the form
+        document.getElementById("firstName").value = '';
+        document.getElementById("lastName").value = '';
+        document.getElementById("dietaryRestrictions").value = '';
+        document.getElementById("mealOption").selectedIndex = 0;
+    });
   });
