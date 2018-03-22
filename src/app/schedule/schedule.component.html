@@ -1,31 +1,87 @@
 <div id="details-section">
-    <h1>Schedule</h1>
-    <div uk-grid class="uk-grid-divider">
-        <div class="uk-width-1-2 uk-text-right">
-            <div class="time">5:00pm</div>
-        </div>
-        <div class="uk-width-1-2">
-            <div class="schedule-item">
-                <p class="title uk-text-lead">Ceremony</p>
-                <p class="location">Buffalo Wild Wings</p>
-                <p class="address">1320 P. St.</p>
-                <button class="uk-button uk-button-default">Map</button>
-            </div>
-        </div>
+    <ul uk-switcher class="uk-subnav">
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Hotel Block</a></li>
+        <li><a href="#">Things to Do</a></li>
+    </ul>
+    <ul class="uk-switcher">
+        <li>
+            <div uk-grid class="uk-grid-divider">
+                <div class="uk-width-1-2 uk-text-right">
+                    <div class="time">5:00pm</div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="schedule-item">
+                        <p class="title uk-text-lead">Ceremony</p>
+                        <p class="location">Buffalo Wild Wings</p>
+                        <p class="address">1320 P. St.</p>
+                        <button class="uk-button uk-button-default">Map</button>
+                    </div>
+                </div>
 
-        <div class="uk-width-1-2 uk-text-right">
-                <div class="time">6:00pm</div>
-            </div>
-            <div class="uk-width-1-2">
-                <div class="schedule-item">
-                    <p class="title uk-text-lead">Reception</p>
-                    <p class="location">Chez Hay</p>
-                    <p class="address">440 S 11th St.</p>
-                    <button class="uk-button uk-button-default" id="reception-map-button">Map</button>
+                <div class="uk-width-1-2 uk-text-right">
+                        <div class="time">6:00pm</div>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <div class="schedule-item">
+                            <p class="title uk-text-lead">Reception</p>
+                            <p class="location">Chez Hay</p>
+                            <p class="address">440 S 11th St.</p>
+                            <button class="uk-button uk-button-default" id="reception-map-button">Map</button>
 
-                    <iframe id="reception-map" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Chez%20Hay&key=AIzaSyDzDdM6BiMm5B5i1jZ3mGx92yDCbzo8wXQ" allowfullscreen></iframe>
+                            <iframe id="reception-map" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Chez%20Hay&key=AIzaSyDzDdM6BiMm5B5i1jZ3mGx92yDCbzo8wXQ" allowfullscreen></iframe>
+                        </div>
+                    </div>
+            </div>
+        </li>
+
+        <li>Hotel block content</li>
+
+        <li>
+            <div class="uk-grid-small">
+                <div class="uk-card uk-card-body uk-card-secondary">
+                    <h3 class="uk-card-title">The Mill</h3>
+                    <div class="uk-grid-small uk-child-width-1-6@m" uk-grid>
+                        <div class="uk-width-5-6">
+                            <p>If you're in it for the caffeine.</p>
+                        </div>
+                        <div class="uk-width-1-6">
+                            <button class="uk-button uk-button-default recommendation-map-button" id="mill-map-button">Map</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-card uk-card-body uk-card-secondary">
+                    <h3 class="uk-card-title">The Railyard</h3>
+                    <div class="uk-grid-small uk-child-width-1-6@m" uk-grid>
+                        <div class="uk-width-5-6">
+                            <p class="uk-width-5-6">The Railyard is a newly-developed district in downtown Lincoln featuring shops, restaurants, and entertainment. 
+                                Check out the big screen, go ice skating, or grab a burger and a beer.</p>
+                        </div>
+                        <div class="uk-width-1-6">
+                            <button class="uk-button uk-button-default recommendation-map-button" id="mill-map-button">Map</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-card uk-card-body uk-card-secondary">
+                    <h3 class="uk-card-title">Lincoln Children's Zoo</h3>
+                    <div class="uk-grid-small uk-child-width-1-6@m" uk-grid>
+                            <div class="uk-width-5-6">
+                                <p>You don't need to be a child to enjoy this zoo. Despite its thorough Larry the Cable Guy endorsements, there are lots of great treasures here, 
+                                    from their headliner Amur leopard to a tribe of lemurs to giant tortoises. It is set amidst a very relaxing neighborhood in Lincoln and is next to 
+                                    Sunken Gardens.
+                                </p>
+                            </div>
+                            <div class="uk-width-1-6">
+                                <button class="uk-button uk-button-default recommendation-map-button" id="mill-map-button">Map</button>
+                            </div>
+                        </div>
                 </div>
             </div>
-    </div>
+
+        </li>
+</ul>
+
 </div>
 <hr class="uk-divider-icon" />

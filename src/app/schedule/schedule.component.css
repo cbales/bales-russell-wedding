@@ -20,3 +20,12 @@
 .schedule-item button {
     margin-top : 10px;
 }
+.uk-subnav {
+    background-color: rgb(53, 53, 53);
+    padding: 10px;
+}
+
+.uk-card-secondary {
+    background-color: rgb(61,61,61);
+    margin-bottom: 30px;
+}

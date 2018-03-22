@@ -9,6 +9,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { RegistryComponent } from './registry/registry.component';
+import { StoryComponent } from './story/story.component';
+import { PeopleComponent } from './people/people.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { RegistryComponent } from './registry/registry.component';
     GalleryComponent,
     NavigationComponent,
     RsvpComponent,
-    RegistryComponent
+    RegistryComponent,
+    StoryComponent,
+    PeopleComponent
   ],
   imports: [
     BrowserModule
