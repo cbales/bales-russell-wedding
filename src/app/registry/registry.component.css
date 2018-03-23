@@ -5,3 +5,8 @@
 #registry-section .uk-card-secondary {
     background-color: rgb(61,61,61);
 }
+
+.site-section {
+    margin-top: 50px !important;
+    margin-bottom: 100px !important;
+}

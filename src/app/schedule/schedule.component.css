@@ -5,6 +5,12 @@
     padding-bottom: 20px;
 }
 
+.site-section {
+    margin-top: 50px !important;
+    margin-bottom: 100px !important;
+}
+
+
 #reception-map {
     display:none;
     padding-top: 4px;

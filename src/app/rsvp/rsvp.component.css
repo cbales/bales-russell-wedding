@@ -3,7 +3,7 @@
 }
 .rsvp-container {
     margin-top: -200px !important;
-    margin-bottom: 200px;
+    margin-bottom: 200px !important;
 }
 
 #send {

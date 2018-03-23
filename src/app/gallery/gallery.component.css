@@ -9,3 +9,8 @@
     background-color: rgb(61,61,61);
     border: 1px dashed white;
 }
+
+.site-section {
+    margin-top: 50px !important;
+    margin-bottom: 100px !important;
+}

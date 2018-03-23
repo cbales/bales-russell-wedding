@@ -1,26 +1,34 @@
-<div id="photos-section">
-  <h1>Photos</h1>
+<div class="site-section" id="photos-section">
+    <ul uk-switcher class="uk-subnav">
+        <li><a href="#">Upload</a></li>
+        <li><a href="#">Gallery</a></li>
+    </ul>
 
-  <!-- <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true">
-      <ul class="uk-slideshow-items">
-          <li>
-              <img src="assets/img/gallery/1.jpg" alt="" uk-cover>
-          </li>
-          <li>
-              <img src="assets/img/gallery/2.jpg" alt="" uk-cover>
-          </li>
-          <li>
-              <img src="assets/img/gallery/3.jpg" alt="" uk-cover>
-          </li>
-      </ul>
+    <ul class="uk-switcher">
+        <li>
+            <form action="/uploadImage" class="dropzone" id="myDropzone" enctype="multipart/form-data">
+            </form>
+        </li>
+        <li>
+            <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true">
+                <ul class="uk-slideshow-items">
+                    <li>
+                        <img src="assets/img/gallery/1.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="assets/img/gallery/2.jpg" alt="" uk-cover>
+                    </li>
+                    <li>
+                        <img src="assets/img/gallery/3.jpg" alt="" uk-cover>
+                    </li>
+                </ul>
 
-      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-      <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-  </div> -->
-
-  <form action="/uploadImage" class="dropzone" id="myDropzone" enctype="multipart/form-data">
-  </form>
-
+            </div>
+        </li>
+    </ul>
+</div>
 
 <hr class="uk-divider-icon" />
