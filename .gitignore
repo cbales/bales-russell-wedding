@@ -5,6 +5,7 @@
 /dist-server
 /tmp
 /out-tsc
+/uploads
 
 # dependencies
 /node_modules
@@ -104,3 +105,4 @@ typings/
 # dotenv environment variables file
 .env
 key.json
+blob-storage-key.json
