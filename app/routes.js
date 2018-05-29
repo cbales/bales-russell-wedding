@@ -4,6 +4,5 @@ module.exports = function(app) {
     });
 
     app.get('/sendRsvp', function(req, res) {
-        console.log("in send rsvp");
     });
 };
