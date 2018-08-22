@@ -43,6 +43,9 @@ body {
         max-width: none;
         left: 120%
     }
+    #ne-img {
+        margin-top: -155%;
+    }
 }
 
 #countdown {
