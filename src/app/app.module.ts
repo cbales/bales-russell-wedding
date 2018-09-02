@@ -7,10 +7,12 @@ import { WeddingComponent } from './wedding/wedding.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ParksComponent } from './parks/parks.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { RegistryComponent } from './registry/registry.component';
 import { StoryComponent } from './story/story.component';
 import { PeopleComponent } from './people/people.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -20,15 +22,22 @@ import { PeopleComponent } from './people/people.component';
     ScheduleComponent,
     GalleryComponent,
     NavigationComponent,
+    ParksComponent,
     RsvpComponent,
     RegistryComponent,
     StoryComponent,
-    PeopleComponent
+    PeopleComponent,
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBxFdXdIWjH5KPaTtm4YjTO58SRQQo1UyE'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

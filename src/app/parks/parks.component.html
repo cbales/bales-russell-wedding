@@ -1,0 +1,39 @@
+PRECS
+<div class="site-section" id="parks-section">
+    <h2>Why the National Park Foundation is on our registry</h2>
+    <p>
+        Darin proposed at the top of Christine Falls in Mt. Rainier National Park. We have hiked together through hundreds of miles of trails on national, state, and local parks before and since then. We hope that preserving these trails for future generations inspires others to take better care of our planet and give everyone the opportunity to enjoy the serenity of nature.
+    </p>
+    <p>Below is a map of the fantastic National Parks and Historic Sites we have gotten to explore. Please add a pin to any you have been to!</p>
+    <div id="map">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+            <agm-marker 
+            *ngFor="let m of markers; let i = index"
+            (markerClick)="clickedMarker(m.label, i)"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            >
+            
+          <agm-info-window>
+            <strong>InfoWindow content</strong>
+          </agm-info-window>
+          
+        </agm-marker>
+          </agm-map>
+
+    </div>
+    <script>
+    //   var map;
+      
+    //     function initMap() {
+            
+    //         map = new google.maps.Map(document.getElementById('map'), {
+    //         center: {lat: -34.397, lng: 150.644},
+    //         zoom: 8
+    //         });
+    //     }
+    </script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxFdXdIWjH5KPaTtm4YjTO58SRQQo1UyE"
+    ></script> -->
+</div>
+<hr class="uk-divider-icon" />
