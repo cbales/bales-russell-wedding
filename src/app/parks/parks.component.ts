@@ -1,43 +1,25 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-parks',
   templateUrl: './parks.component.html',
   styleUrls: ['./parks.component.css']
 })
+@Injectable()
 export class ParksComponent implements OnInit {
   title: string = 'US National Parks';
   lat: number = 40.654541;
   lng: number = -96.650221;
   zoom: number = 4;
 
-  markers: marker[] = [
-	  {
-		  lat: 40.4252,
-		  lng: 40.7144,
-      label: 'Mt. Rainier National Park',
-      visitor: 'Caitlin',
-      location: 'Mt. Rainier National Park'
-	  },
-	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
-      label: 'B',
-      visitor: 'Darin',
-      location: 'Grand Canyon'
-	  },
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-      label: 'C',
-      visitor: 'Darin & Caitlin',
-      location: 'Yellowstone'
-	  }
-  ]
+  markers: marker[] = [];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    readLocationMarkers(this);
   }
 }
 
@@ -50,3 +32,18 @@ interface marker {
   location: string;
 }
 
+function readLocationMarkers(t) {
+var markers = [];
+  t.http.get("/getPins").subscribe(res=> {
+    res.forEach(item => {
+      markers.push({
+        lat: Number(item['lat']),
+        lng: Number(item['lng']),
+        label: item['label'],
+        visitor: item['visitor'],
+        location: item['location']
+      });
+    });
+    t.markers = markers;
+  });
+}

@@ -116,5 +116,76 @@ app.post('/sendRsvp', (req, res) => {
 app.post('/uploadImage', upload.single('file'), (req, res) => {
     res.send("Success!");
 });
+app.get('/getPins', (req, res) => {
+    var markers = [];
+    var parks = [];
+
+    var {google} = require('googleapis');
+    var OAuth2 = google.auth.OAuth2;
+
+    var key = require('./key.json');
+    var jwtClient = new google.auth.JWT(
+    key.client_email,
+    null,
+    key.private_key,
+    ['https://www.googleapis.com/auth/spreadsheets'], // an array of auth scopes
+    null
+    );
+
+    jwtClient.authorize(function (err, tokens) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+
+    var accessToken = tokens.access_token;
+
+    var sheetId = "1pJH_upOGrzfSuTk1JHz5WQdZRNaOqcAPdMtHC2n9pWs"; // National parks workbook
+    var parkUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/Parks!A2:F418?access_token=" + accessToken;
+    var visitUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/Visitors!A2:B600?access_token=" + accessToken;
+
+    https.get(parkUrl, (resp) => {
+      let data = '';
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+      resp.on('end', () =>{
+        var results = JSON.parse(data);
+        parks = results['values'];
+
+        https.get(visitUrl, (resp) => {
+          let data = '';
+          resp.on('data', (chunk) => {
+            data += chunk;
+          });
+          resp.on('end', () =>{
+            var results = JSON.parse(data);
+            var visits = results['values'];
+
+            visits.forEach(visit => {
+              var visitedPark = [];
+                parks.forEach(park => {
+                  if (park[0] == visit[0])
+                    visitedPark = park;
+                });
+
+                let m = {
+                  lat: visitedPark[3],
+                  lng: visitedPark[4],
+                  label: '',
+                  visitor: visit[1],
+                  location: visitedPark[1]
+                };
+                markers.push(m);
+            });
+            //console.log(markers);
+            //return markers;
+            res.send(markers);
+          });
+        });
+      });
+    });
+  });
+}); 
 
 exports = module.exports = app;

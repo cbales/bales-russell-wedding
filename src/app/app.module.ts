@@ -13,6 +13,7 @@ import { RegistryComponent } from './registry/registry.component';
 import { StoryComponent } from './story/story.component';
 import { PeopleComponent } from './people/people.component';
 import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBxFdXdIWjH5KPaTtm4YjTO58SRQQo1UyE'
-    })
+    }),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
