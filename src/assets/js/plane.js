@@ -37,3 +37,37 @@ $(document).on("click", "#send", function(){
         document.getElementById("mealOption").selectedIndex = 0;
     });
   });
+
+function getStateInfo(state){
+    $("#national-page").hide();
+    $.get("/getState", state)
+    .success(function(res) {
+        var innerHtml = '<h3>National Parks in ' + state + '</h3>';
+        innerHtml += '<ul>';
+        res.forEach(park => {
+            innerHtml += '<div class="uk-button uk-button-default" onclick="showNameBox('+park[0]+')">' + park[1] + '</div>';
+        });
+        innerHtml += '</ul>';
+        $("#state-page").html(innerHtml);
+    });
+}
+
+function showNameBox(id) {
+    $("#state-page").hide();
+    $("#name-page").show();
+    $("#park-number").val(id);
+}
+
+$(document).on("click", "#submit-pin", function(){
+    setTimeout(function() {
+        var pin = {
+            name: document.getElementById('guest-name').value,
+            parkId: document.getElementById('park-number').value
+        }
+
+        $.post('/createPin', pin)
+        .success(function(res) {
+            UIkit.modal.alert('Added your visit to our map!');
+        })
+    }, 800);
+});
