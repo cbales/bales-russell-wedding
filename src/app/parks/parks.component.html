@@ -1,0 +1,104 @@
+<div class="site-section" id="parks-section">
+    <h2>Why the National Park Foundation is on our registry</h2>
+    <p>
+        Darin proposed at the top of Christine Falls in Mt. Rainier National Park. We have hiked together through hundreds of miles of trails on national, state, and local parks before and since then. We hope that preserving these trails for future generations inspires others to take better care of our planet and give everyone the opportunity to enjoy the serenity of nature.
+    </p>
+    <p>Below is a map of the fantastic National Parks and Historic Sites we have gotten to explore. Please add a pin to any you have been to!</p>
+    <div class="uk-text-center"><button class="uk-button uk-button-default" id="add-park-btn" uk-toggle="target: #park-list">+ Add a Pin</button> <br /></div>
+    <div id="park-list" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title uk-heading-divider uk-text-muted">List of National Parks by State</h2>
+                <div id="national-page">
+                    <div class="uk-button uk-button-default">Alabama</div>
+                    <div class="uk-button uk-button-default">Alaska</div>
+                    <div class="uk-button uk-button-default">American Samoa</div>
+                    <div class="uk-button uk-button-default">Arizona</div>
+                    <div class="uk-button uk-button-default">Arkansas</div>
+                    <div class="uk-button uk-button-default">California</div>
+                    <div class="uk-button uk-button-default">Colorado</div>
+                    <div class="uk-button uk-button-default">Conneticut</div>
+                    <div class="uk-button uk-button-default">Delaware</div>
+                    <div class="uk-button uk-button-default">Florida</div>
+                    <div class="uk-button uk-button-default">Georgia</div>
+                    <div class="uk-button uk-button-default">Guam</div>
+                    <div class="uk-button uk-button-default">Hawaii</div>
+                    <div class="uk-button uk-button-default">Idaho</div>
+                    <div class="uk-button uk-button-default">Illinois</div>
+                    <div class="uk-button uk-button-default">Indiana</div>
+                    <div class="uk-button uk-button-default">Iowa</div>
+                    <div class="uk-button uk-button-default">Kansas</div>
+                    <div class="uk-button uk-button-default">Kentucky</div>
+                    <div class="uk-button uk-button-default">Louisiana</div>
+                    <div class="uk-button uk-button-default">Maine</div>
+                    <div class="uk-button uk-button-default">Maryland</div>
+                    <div class="uk-button uk-button-default">Massachusetts</div>
+                    <div class="uk-button uk-button-default">Michigan</div>
+                    <div class="uk-button uk-button-default">Minnesota</div>
+                    <div class="uk-button uk-button-default">Mississippi</div>
+                    <div class="uk-button uk-button-default">Missouri</div>
+                    <div class="uk-button uk-button-default">Montana</div>
+                    <div class="uk-button uk-button-default">Nebraska</div>
+                    <div class="uk-button uk-button-default">Nevada</div>
+                    <div class="uk-button uk-button-default">New Hampshire</div>
+                    <div class="uk-button uk-button-default">New Jersey</div>
+                    <div class="uk-button uk-button-default">New Mexico</div>
+                    <div class="uk-button uk-button-default">New York</div>
+                    <div class="uk-button uk-button-default">North Carolina</div>
+                    <div class="uk-button uk-button-default">North Dakota</div>
+                    <div class="uk-button uk-button-default">Ohio</div>
+                    <div class="uk-button uk-button-default">Oklahoma</div>
+                    <div class="uk-button uk-button-default">Oregon</div>
+                    <div class="uk-button uk-button-default">Pennsylvania</div>
+                    <div class="uk-button uk-button-default">Puerto Rico</div>
+                    <div class="uk-button uk-button-default">Rhode Island</div>
+                    <div class="uk-button uk-button-default">South Carolina</div>
+                    <div class="uk-button uk-button-default">South Dakota</div>
+                    <div class="uk-button uk-button-default">Tennessee</div>
+                    <div class="uk-button uk-button-default">Texas</div>
+                    <div class="uk-button uk-button-default">Utah</div>
+                    <div class="uk-button uk-button-default">Vermont</div>
+                    <div class="uk-button uk-button-default">Virgin Islands</div>
+                    <div class="uk-button uk-button-default">Virginia</div>
+                    <div class="uk-button uk-button-default">Washington</div>
+                    <div class="uk-button uk-button-default">Washington DC</div>
+                    <div class="uk-button uk-button-default">West Virginia</div>
+                    <div class="uk-button uk-button-default">Wisconsin</div>
+                    <div class="uk-button uk-button-default">Wyoming</div>
+                </div>
+                <div id="state-page"></div>
+                <div id="name-page">
+                    <form uk-grid class="uk-grid-small uk-text-center">
+                        <p>Add your name to the marker</p>
+                        <input class="uk-input" type="text" id="guest-name" placeholder="Your name">
+                        <input hidden type="number" id="park-number" />
+                        <div class="uk-button uk-button-default uk-text-center" id="submit-pin">Submit</div>
+                    </form>
+                </div>
+                <div id="success-page">
+                    <h3 class="uk-text-muted">Pin Added!</h3>
+                    <div class="uk-button uk-button-default uk-modal-close" id="close-modal" type="button">I'm done</div>
+                    <div class="uk-button uk-button-default" id="add-another">+ Add another pin</div>
+                </div>
+                <div class="uk-modal-close" type="button"></div>
+            </div>
+        </div>
+    <div id="map">
+        
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+            <agm-marker 
+            *ngFor="let m of markers; let i = index"
+            (markerClick)="clickedMarker(m.label, i)"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            >
+            
+          <agm-info-window>
+            <strong>InfoWindow content</strong>
+          </agm-info-window>
+          
+        </agm-marker>
+          </agm-map>
+
+        </div>
+</div>
+<hr class="uk-divider-icon" />
