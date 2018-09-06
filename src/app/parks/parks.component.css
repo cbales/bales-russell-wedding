@@ -4,3 +4,23 @@
 #name-page {
     display: none;
 }
+#add-park-btn {
+    margin-bottom: 20px;
+}
+#national-page .uk-button {
+    margin: 10px;
+    padding: 0 15px;
+}
+#state-page .uk-button {
+    line-height: 30px;
+}
+#guest-name {
+    margin: 20px;
+}
+#submit-pin {
+    margin-left: 20px;
+    padding-left: 30px;
+}
+#success-page {
+    display: none;
+}

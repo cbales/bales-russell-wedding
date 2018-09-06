@@ -38,14 +38,20 @@ $(document).on("click", "#send", function(){
     });
   });
 
+  $(document).on("click", "#national-page .uk-button-default", function(){
+      getStateInfo($(this).html());
+  });
+
+
 function getStateInfo(state){
     $("#national-page").hide();
+    $("#state-page").show();
     $.get("/getState", state)
     .success(function(res) {
-        var innerHtml = '<h3>National Parks in ' + state + '</h3>';
+        var innerHtml = '<h3 class="uk-heading-divider uk-text-muted">National Parks in ' + state + '</h3>';
         innerHtml += '<ul>';
         res.forEach(park => {
-            innerHtml += '<div class="uk-button uk-button-default" onclick="showNameBox('+park[0]+')">' + park[1] + '</div>';
+            innerHtml += '<div class="uk-button uk-button-default" onclick="showNameBox('+park[0]+')" style="margin-bottom: 10px">' + park[1] + '</div>';
         });
         innerHtml += '</ul>';
         $("#state-page").html(innerHtml);
@@ -55,6 +61,7 @@ function getStateInfo(state){
 function showNameBox(id) {
     $("#state-page").hide();
     $("#name-page").show();
+    $('.uk-modal-title').html('Add a Pin');
     $("#park-number").val(id);
 }
 
@@ -67,7 +74,24 @@ $(document).on("click", "#submit-pin", function(){
 
         $.post('/createPin', pin)
         .success(function(res) {
-            UIkit.modal.alert('Added your visit to our map!');
+            $("#name-page").hide();
+            $("#success-page").show();
         })
     }, 800);
 });
+
+$(document).on("click", "#add-another", function() {
+    resetMapModal();
+});
+$(document).on("click", "#close-modal", function() {
+    resetMapModal();
+});
+
+
+function resetMapModal() {
+    $('.uk-modal-title').html('National Parks by State');
+    $("#state-page").hide();
+    $("#name-page").hide();
+    $("#success-page").hide();
+    $("#national-page").show();
+}

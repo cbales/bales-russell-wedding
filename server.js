@@ -189,10 +189,9 @@ app.post('/createPin', (req, res) => {
         };
 
         var post_req = https.request(post_options, function(res) {
-            console.log("in post req");
+            
             res.setEncoding('utf8');
             res.on('data', function (chunk) {
-                console.log('Response: ' + chunk);
             }).on('error', function(err) {
                 console.log(err);
             });
