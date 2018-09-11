@@ -36,6 +36,7 @@ return res.end('Api working');
 });
 
 app.post('/sendRsvp', (req, res) => {
+    //console.log(req);
     //console.log(req.body.firstName);
     //console.log("in send rsvp");
 
@@ -56,19 +57,21 @@ app.post('/sendRsvp', (req, res) => {
         console.log(err);
         return;
     }
-    console.log(tokens);
 
     var accessToken = tokens.access_token;
 
     var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; //Our wedding worksheet, shared with a service account
     var postUrl = "/v4/spreadsheets/"+sheetId+"/values/RSVP!A1:D1:append?valueInputOption=USER_ENTERED&access_token=" + accessToken;
 
-    var values = '[' +
-        '"' + req.body.firstName + '",' +
-        '"' + req.body.lastName + '",' +
-        '"' + req.body.mealOption + '",' +
-        '"' + req.body.dietaryRestrictions + '"' +
-    ']';
+    var values = '';
+
+    req.body.forEach(guest => {
+        values+= '["' + guest.firstName + '",'+
+        '"' + guest.lastName + '",' +
+        '"' + guest.rsvp + '",' +
+        '"' + guest.dietaryRestrictions + '",' +
+        '"' + guest.songRequest +'"],'
+    });
 
     var body = '{ "values": [' +
         values + 
@@ -83,16 +86,10 @@ app.post('/sendRsvp', (req, res) => {
         }
     };
 
-    //console.log(values);
-
-    //console.log(body);
-    //console.log("String body: " + querystring.stringify(values));
-
     var post_req = https.request(post_options, function(res) {
-        console.log("in post req");
         res.setEncoding('utf8');
         res.on('data', function (chunk) {
-            console.log('Response: ' + chunk);
+            //throwing away the response!
         }).on('error', function(err) {
             console.log(err);
         });
@@ -104,13 +101,9 @@ app.post('/sendRsvp', (req, res) => {
     // post the data
     post_req.write(body);
     post_req.end();
-
-
-});
-
-
-    res.send("Success");
     });
+    res.send("Success");
+});
 
 
 app.post('/uploadImage', upload.single('file'), (req, res) => {

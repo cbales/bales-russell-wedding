@@ -20,21 +20,30 @@ $(document).on("click", "#send", function(){
       }, 800);
 
     // Send the form
-    var user = {
-        firstName: document.getElementById("firstName").value, 
-        lastName: document.getElementById("lastName").value, 
-        mealOption: document.getElementById("mealOption").value, 
-        dietaryRestrictions: document.getElementById("dietaryRestrictions").value
-    };
+    var users = [];
+    $('.invitation-guest').each(function() {
+        var name = $($(this).children(".firstname")[0]).val();
+        var user = {
+            firstName: name,
+            lastName: $($(this).children(".lastname")[0]).val(),
+            dietaryRestrictions: $($(this).children(".diet-input")[0]).val(),
+            rsvp: $("input[name='rsvp-"+name+"']:checked").val(),
+            songRequest: $("#song-request").val()
+        }
+        users.push(user);
+    });
 
-    $.post("/sendRsvp", user)
-        .success(function(res) {
-        UIkit.notification("RSVP sent!", "primary");
-        //Clear the form
-        document.getElementById("firstName").value = '';
-        document.getElementById("lastName").value = '';
-        document.getElementById("dietaryRestrictions").value = '';
-        document.getElementById("mealOption").selectedIndex = 0;
+    $.ajax({
+        method:"POST",
+        url:"/sendRsvp",
+        data: JSON.stringify(users),
+        contentType: "application/json",
+        success:function(res) {
+            UIkit.notification("RSVP sent!", "primary");
+            //Clear the form
+            $(".invitees").html("");
+            $("#send").hide();
+        }
     });
   });
 
@@ -49,15 +58,17 @@ $(document).on("click", "#send", function(){
             //$(".invitee").show();
             var innerHtml = '<h2 style="color: inherit">Your invitation</h2>';
             res.party.forEach(guest => {
+                innerHtml += '<div class="invitation-guest"><input type="text" hidden class="firstname" value='+guest[0]+'>';
+                innerHtml += '<input type="text" hidden class="lastname" value='+guest[1]+'>';
                 innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
-                innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'"> I will be attending</label>  ';
-                innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'"> I will not be attending</label>';
+                innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" value="yes"> I will be attending</label>  ';
+                innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" value="no"> I will not be attending</label>';
                 innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
                 innerHtml += '<input class="uk-input diet-input" id="diet-'+guest[0]+'" type="text" style="margin-top: 10px; display: none" placeholder="Dietary restrictions" />';
+                innerHtml += '</div>';
             });
             innerHtml += '<hr />';
-            innerHtml += '<br/><input class="uk-input" type="text" placeholder="Favorite drink" />';
-            innerHtml += '<br/><br/><input class="uk-input" type="text" placeholder="Favorite dance song" />';
+            innerHtml += '<br/><br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" />';
             $('.invitees').html(innerHtml);
             $('.invitees').slideDown('400');
             $("#send").show();

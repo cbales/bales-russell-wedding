@@ -28,6 +28,10 @@
     height: 600px;
 }
 
+#lookup-button {
+    height: 40px;
+}
+
 /* From: https://codepen.io/cihadturhan/pen/KIJdD */
 
 #plate.front {
