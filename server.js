@@ -162,7 +162,7 @@ app.post('/lookupUser', (req, res) => {
                     }
                 });
                 // NOW we look for whether we have marked them as yes or no yet
-                var rsvpUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RSVP!A2:C300?access_token=" + accessToken;
+                var rsvpUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RSVP!A2:E300?access_token=" + accessToken;
     
                 if(partyList.length > 0) {
                     https.get(rsvpUrl, (resp) => {
