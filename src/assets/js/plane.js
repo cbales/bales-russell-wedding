@@ -48,6 +48,8 @@ $(document).on("click", "#send", function(){
   });
 
   $(document).on("click", "#lookup-button", function() {
+      $("#lookup-button").hide();
+      $("#lookup-searching").show();
     var user = {
         firstName: document.getElementById("firstName").value, 
         lastName: document.getElementById("lastName").value
@@ -76,6 +78,8 @@ $(document).on("click", "#send", function(){
             innerHtml += '<hr />';
             innerHtml += '<br/><br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" />';
             $('.invitees').html(innerHtml);
+            $("#lookup-searching").hide();
+            $('#lookup-button').show();
             $('.invitees').slideDown('400');
             $("#send").show();
 
@@ -85,6 +89,8 @@ $(document).on("click", "#send", function(){
                 for (var i = 0, len = elements.length; i < len; ++i) {
                     elements[i].readOnly = true;
                 }
+                document.getElementById("firstName").readOnly = false;
+                document.getElementById("lastName").readOnly = false;
                 $("#rsvp-form input[type=radio]").attr('disabled', true);
                 $("#send").hide();
 

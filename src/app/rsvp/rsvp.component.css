@@ -29,7 +29,18 @@
 }
 
 #lookup-button {
-    height: 40px;
+    height: 60px;
+    padding-top: 10px;
+}
+
+#lookup-searching {
+    height: 60px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+#lookup-searching img {
+    height: 60px;
 }
 
 /* From: https://codepen.io/cihadturhan/pen/KIJdD */
