@@ -5,4 +5,6 @@ module.exports = function(app) {
 
     app.get('/sendRsvp', function(req, res) {
     });
+
+    app.get('/lookupUser', function(req,res){});
 };

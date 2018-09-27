@@ -6,13 +6,47 @@
     margin-bottom: 200px !important;
 }
 
-#send {
+#send, #lookup-button {
     margin-left: auto;
     margin-right: auto;
 }
 
-#send span {
+#send span, #lookup-button span {
     margin-left: 10px;
+}
+
+.guestname {
+    text-align: left !important;
+    font-size: 1.2rem !important;
+}
+
+.diet-input {
+    margin-top: 10px;
+}
+
+#lookup-button {
+    height: 60px;
+    padding-top: 10px;
+}
+
+#lookup-searching {
+    height: 60px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+#lookup-searching img {
+    height: 60px;
+}
+
+#rsvp-title {
+    font-size: 2.625rem;
+    color: white;
+}
+#rsvp-icon {
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* From: https://codepen.io/cihadturhan/pen/KIJdD */
@@ -134,7 +168,7 @@
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
     width: 400px;
-    height: 260px;
+    /*height: 260px;*/
     top: 300px;
 
     -webkit-transition: all 0.4s ease-in-out;
