@@ -39,6 +39,16 @@
     height: 60px;
 }
 
+#rsvp-title {
+    font-size: 2.625rem;
+    color: white;
+}
+#rsvp-icon {
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* From: https://codepen.io/cihadturhan/pen/KIJdD */
 
 #plate.front {
