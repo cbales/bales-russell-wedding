@@ -32,6 +32,23 @@ body {
     opacity: 0.4;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    #cover-img {
+        max-width: none;
+        left: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    #cover-img {
+        max-width: none;
+        left: 120%
+    }
+    #ne-img {
+        margin-top: -155%;
+    }
+}
+
 #countdown {
     font-size: 12px;
 }

@@ -1,5 +1,5 @@
 #registry-section img {
-    height: 140px;
+    max-height: 140px;
     padding:20px;
 }
 #registry-section .uk-card-secondary {
