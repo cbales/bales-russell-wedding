@@ -14,6 +14,7 @@ import { StoryComponent } from './story/story.component';
 import { PeopleComponent } from './people/people.component';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegistryComponent,
     StoryComponent,
     PeopleComponent,
+    DetailsComponent,
     
   ],
   imports: [

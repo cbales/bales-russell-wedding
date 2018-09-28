@@ -1,0 +1,28 @@
+#roca {
+    font-family: 'Montaga', serif;
+    font-size: 54px;
+}
+#celebrate {
+    margin-bottom: -20px;
+}
+#detail-date {
+    margin-top: -5px;
+}
+#reception-map {
+    display:none;
+    padding-top: 4px;
+}
+#reception-map-button{
+    margin-top:20px;
+}
+
+#detailed-details p {
+    margin: 0px;
+}
+#detailed-details {
+    margin-top: 80px;
+}
+
+#detailed-details h2 {
+    font-size: 1.6rem;
+}
