@@ -35,3 +35,21 @@
     background-color: rgb(61,61,61);
     margin-bottom: 30px;
 }
+
+.hotel-title {
+    font-size: 1.4rem;
+}
+.hotel-title span{
+    color: #eee;
+}
+.drive-time {
+    position: absolute;
+    bottom: 30px;
+}
+.drive-time span{
+    font-size: 1.2rem;
+    color: #eee;
+}
+.map-button {
+    margin-top: 20px;
+}
