@@ -53,3 +53,9 @@
 .map-button {
     margin-top: 20px;
 }
+.hotel-map {
+    display: none;
+}
+.card-div {
+    margin-bottom: 40px;
+}
