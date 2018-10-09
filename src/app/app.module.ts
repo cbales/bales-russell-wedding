@@ -11,10 +11,10 @@ import { ParksComponent } from './parks/parks.component';
 import { RsvpComponent } from './rsvp/rsvp.component';
 import { RegistryComponent } from './registry/registry.component';
 import { StoryComponent } from './story/story.component';
-import { PeopleComponent } from './people/people.component';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './details/details.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 @NgModule({
@@ -28,8 +28,8 @@ import { DetailsComponent } from './details/details.component';
     RsvpComponent,
     RegistryComponent,
     StoryComponent,
-    PeopleComponent,
     DetailsComponent,
+    FaqComponent,
     
   ],
   imports: [
