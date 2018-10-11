@@ -59,3 +59,9 @@
 .card-div {
     margin-bottom: 40px;
 }
+.sm-link-button {
+    font-size: .8rem;
+}
+.link-button {
+    margin-bottom: 10px;
+}
