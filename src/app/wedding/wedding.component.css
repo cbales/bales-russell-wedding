@@ -12,7 +12,7 @@ body {
 }
 #sub-footer{
     padding-top: 5px;
-    height: 30px;
+    height: 50px;
     background-color: rgb(39, 39, 39);
     text-align: center;
 }
@@ -23,7 +23,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 260px;
+    width: 200px;
+    margin-bottom: 80px;
 
 }
 
@@ -51,6 +52,7 @@ body {
 
 #countdown {
     font-size: 12px;
+    margin-top: 10px;
 }
 .content-wrapper {
     max-width: 1200px;
@@ -58,7 +60,7 @@ body {
     margin-right: auto;
 }
 #footer {
-    margin-top: 486px;
+    margin-top: 186px;
 }
 #ne-img {
     margin-top: -25%;
