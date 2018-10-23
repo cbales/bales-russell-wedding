@@ -14,3 +14,13 @@
     margin-top: 50px !important;
     margin-bottom: 100px !important;
 }
+.gallery-img {
+    display: inline-block;
+}
+.sub-section {
+    display: inline-block;
+    vertical-align: middle;
+}
+.c-item {
+    float: right;
+}
