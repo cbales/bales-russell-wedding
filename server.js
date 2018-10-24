@@ -32,7 +32,7 @@ app.listen(port,() => {
     });
 
 app.get('/', (req,res) => {
-return res.end('Api working');
+return res.end('The robots are working on refreshing the website. Try again in a minute or two.');
 });
 
 app.post('/sendRsvp', (req, res) => {
