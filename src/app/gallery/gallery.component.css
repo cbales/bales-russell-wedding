@@ -24,3 +24,8 @@
 .c-item {
     float: right;
 }
+@media only screen and (max-width: 600px) {
+    .site-section {
+        padding-left: 5px;
+    }
+}
