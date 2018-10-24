@@ -289,6 +289,48 @@ app.post('/createPin', (req, res) => {
     res.send("Success");
 });
 
+app.post('/sendBug', (req, res) => {
+    getAccessToken(function(accessToken){
+
+        var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; // Our wedding worksheet
+        var postUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/WebsiteBugs!A2:C2:append?valueInputOption=USER_ENTERED&access_token=" + accessToken;
+
+        var values = '["' + req.body.issue + '","' + req.body.notify+'","' + req.body.name +'"]';
+
+        var body = '{ "values": [' +
+        values + 
+        ']}';
+
+        var post_options = {
+            host: 'sheets.googleapis.com',
+            port: '443',
+            path: postUrl,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+    var post_req = https.request(post_options, function(res) {
+        res.setEncoding('utf8');
+        res.on('data', function (chunk) {
+
+        }).on('error', function(err) {
+            console.log(err);
+        });
+    });
+    post_req.on('error', function(e) {
+        console.log("problem with request: " + e.message);
+    });
+
+    // post the data
+    post_req.write(body);
+    post_req.end();
+    res.send("Success");
+    });
+    
+});
+
 app.get('/getPins', (req, res) => {
     var markers = [];
     var parks = [];

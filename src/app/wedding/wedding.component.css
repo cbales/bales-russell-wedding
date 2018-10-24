@@ -19,7 +19,7 @@ body {
 #really-long-div {
     height: 1800px;
 }
-#footer img {
+#ring-box {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -73,4 +73,34 @@ body {
     font-size: 14px;
     background-color: #13131361;
     padding: 5px;
+}
+
+#contact-buttons {
+    float: right;
+    margin-top: -20px;
+    margin-right: 20px;
+}
+#contact-buttons div {
+    display: inline-block;
+    padding: 0 20px;
+}
+#contact-buttons img {
+    height: 20px;
+}
+
+#close-bug {
+    position: absolute;
+    right: 8px;
+    top: 0;
+    font-size: 20px;
+    cursor: pointer;
+}
+#bug-submit-btn {
+    padding: 0 20px;
+}
+#submit-div {
+    margin-bottom: 0;
+}
+#bug-icon {
+    height: 24px;
 }

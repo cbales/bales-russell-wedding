@@ -195,3 +195,21 @@ function resetMapModal() {
     $("#success-page").hide();
     $("#national-page").show();
 }
+
+$(document).on("click", "#bug-submit-btn", function() {
+    sendBug();
+});
+function sendBug() {
+    issue = $("#issue-content").val();
+    notify = document.getElementById('notify-me').checked;
+    name = $("#name").val();
+    var details = {
+        issue: issue,
+        notify: notify,
+        name: name
+    }
+    $.post('/sendBug', details).success(function(res) {
+        UIkit.modal("#bug-modal").hide();
+        UIkit.notification("Bug logged!", "primary");
+    })
+}

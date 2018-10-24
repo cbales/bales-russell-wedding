@@ -27,8 +27,44 @@
             <app-gallery></app-gallery>
         </div>
 
-        <div id="footer">
-            <img src="assets/img/ring-box.png">
-            <div id="sub-footer"><div id="countdown" uk-countdown="date: 2019-11-02T18:00:00+00:00">See you in <span class="uk-countdown-number uk-countdown-days uk-text-small"> </span> days!</div></div>
+        <div id="bug-modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">File a Bug</h2>
+                <div class="uk-modal-close" id="close-bug">x</div>
+                <p>Sorry to hear that something isn't working for you. Please let us know what it is and we'll work on getting it fixed ASAP!</p>
+                <p>Or, if you prefer, open a <a href="https://github.com/cbales/bales-russell-wedding/issues">GitHub issue</a>.</p>
+                <form>
+                    <fieldset class="uk-fieldset">
+                        <div class="uk-margin">
+                            <textarea class="uk-textarea" id="issue-content" placeholder="Please describe your issue..."></textarea>
+                        </div>
+                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                            <label><input class="uk-checkbox" type="checkbox" id="notify-me"> Notify me when this is fixed</label>
+                        </div>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" id="name" placeholder="Name or email">
+                        </div>
+
+                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid" id="submit-div">
+                                <div class="uk-button uk-button-primary uk-align-center" id="bug-submit-btn">Submit</div>
+                            </div>
+                    </fieldset>
+                </form>
+
+            </div>
         </div>
-      </div>      
+
+        <div id="footer">
+            <img id="ring-box" src="assets/img/ring-box.png">
+            <div id="sub-footer">
+                <div id="countdown" uk-countdown="date: 2019-11-02T18:00:00+00:00">See you in <span class="uk-countdown-number uk-countdown-days uk-text-small"> </span> days!</div>
+
+                <div id="contact-buttons">
+                    <div><a href="mailto:c.bales@outlook.com"><img src="assets/img/email.png"></a></div>
+                    <div><a href="#" uk-toggle="target: #bug-modal"><img id="bug-icon" src="assets/img/bug.png"></a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
