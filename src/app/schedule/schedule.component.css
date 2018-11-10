@@ -72,6 +72,9 @@
     .link-button {
         padding: 5px 15px;
     }
+    .time-column .time {
+        padding: 10px 0 !important;
+    }
 }
 .time-column div {
     font-size: 1.5rem;
