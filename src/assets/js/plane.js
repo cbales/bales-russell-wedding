@@ -213,3 +213,13 @@ function sendBug() {
         UIkit.notification("Bug logged!", "primary");
     })
 }
+
+  function showComingSoon(data) {
+    $(data).children("img").hide();
+    $(data).append('<p style="font-size: 2rem">Coming soon</p>');
+  }
+
+  function hideComingSoon(data) {
+      $(data).children("img").show();
+      $(data).children("p").remove();
+  }
