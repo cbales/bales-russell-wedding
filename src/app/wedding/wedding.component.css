@@ -13,7 +13,7 @@ body {
 #sub-footer{
     padding-top: 5px;
     height: 50px;
-    background-color: rgb(39, 39, 39);
+    background-color: rgba(39, 39, 39, .7);
     text-align: center;
 }
 #really-long-div {
@@ -61,6 +61,8 @@ body {
 }
 #footer {
     margin-top: 186px;
+    background-image: url(/assets/img/footer-1.png);
+    background-position: 50% 0 !important;
 }
 #ne-img {
     margin-top: -25%;
