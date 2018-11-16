@@ -1,5 +1,7 @@
 $(document).on("click", "#send", function(){
       setTimeout(function() {
+          $("#left-wing").show();
+          $("#right-wing").show();
           $('#plate').removeClass('front');
           $('#container').removeClass('beginning');
           $('.curvable').addClass('curved');
@@ -11,6 +13,8 @@ $(document).on("click", "#send", function(){
                       $('#container').addClass('fly_away');
                       setTimeout(function(){
                           $('#plate').addClass('front');
+                          $("#left-wing").hide();
+                            $("#right-wing").hide();
                           $('#container').removeClass('fly_away fly_away_first hover').addClass('beginning');
                           $('.curvable').removeClass('curved');
                       },3000);
