@@ -7,9 +7,10 @@
 }
 
 .site-section {
-    margin-top: 50px !important;
+    margin-top: -60px !important; /* Fix for nav */
     margin-bottom: 100px !important;
-}
-.site-section {
     padding: 10px;
+}
+h1 {
+    margin-top: 60px; /* Fix for nav */
 }
