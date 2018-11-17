@@ -53,8 +53,10 @@ $(document).on("click", "#send", function(){
                     innerHtml += "<p>You have already RSVP'd. Thanks!</p>";
                     innerHtml += "<p>If you need to change your RSVP, please send us an <a href='mailto:c.bales@outlook.com'>email</a>.</p>";
                 }
-                
-                res.party.forEach(guest => {
+
+                for (var i = 0; i < res.party.length; i++)
+                {
+                    guest = res.party[i];
                     innerHtml += '<div class="invitation-guest"><input type="text" hidden class="firstname" value='+guest[0]+'>';
                     innerHtml += '<input type="text" hidden class="lastname" value='+guest[1]+'>';
                     innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
@@ -63,7 +65,7 @@ $(document).on("click", "#send", function(){
                     innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
                     innerHtml += '<input class="uk-input diet-input" id="diet-'+guest[0]+'" type="text" style="margin-top: 10px; display: none" placeholder="Dietary restrictions" />';
                     innerHtml += '</div>';
-                });
+                }
                 innerHtml += '<hr />';
                 innerHtml += '<br/><br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" />';
                 $('.invitees').html(innerHtml);
@@ -83,13 +85,15 @@ $(document).on("click", "#send", function(){
                     $("#rsvp-form input[type=radio]").attr('disabled', true);
                     $("#send").hide();
 
-                    res.rsvpData.forEach(guest => {
+                    for(var i = 0; i < res.rsvpData.length; i++)
+                    {
+                        guest = res.rsvpData[i];
                         if (guest[2] == "yes") {
                             $("#rsvp-yes-"+guest[0]).prop("checked", true);
                         } else if (guest[2] == "no") {
                             $("#rsvp-no-"+guest[0]).prop("checked", true);
                         }
-                    });
+                    }
                     if (res.rsvpData[0][4]) {
                         $("#song-request").val(res.rsvpData[0][4]);
                     }
@@ -133,9 +137,10 @@ function getStateInfo(state){
     .success(function(res) {
         var innerHtml = '<h3 class="uk-heading-divider uk-text-muted">National Parks in ' + state + '</h3>';
         innerHtml += '<ul>';
-        res.forEach(park => {
+        for (var i = 0; i < res.length; i++) {
+        park = res[i];
             innerHtml += '<div class="uk-button uk-button-default" onclick="showNameBox('+park[0]+')" style="margin-bottom: 10px">' + park[1] + '</div>';
-        });
+        }
         innerHtml += '</ul>';
         $("#state-page").html(innerHtml);
     });
