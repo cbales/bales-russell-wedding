@@ -4,5 +4,6 @@
 @media only screen and (max-width: 600px) {
     .uk-navbar-nav a {
         font-size: .7rem;
+        padding: 0 7px;
     }
 }

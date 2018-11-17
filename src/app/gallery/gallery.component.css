@@ -31,4 +31,11 @@ h1 {
     .site-section {
         padding-left: 5px;
     }
+    .gallery-img {
+        width: 98%;
+        padding: 5px 0 5px 3px;
+    }
+    .gallery-img img {
+        width: 100%;
+    }
 }
