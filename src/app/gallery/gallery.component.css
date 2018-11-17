@@ -31,11 +31,20 @@ h1 {
     .site-section {
         padding-left: 5px;
     }
+}
+@media only screen and (max-width: 400px) {
+    
     .gallery-img {
         width: 98%;
         padding: 5px 0 5px 3px;
     }
     .gallery-img img {
         width: 100%;
+    }
+    .d-item, .e-item {
+        display: none; /* These are potato quality at this width */
+    }
+    .sub-section {
+        width: 98%;
     }
 }
