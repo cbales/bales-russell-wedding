@@ -64,9 +64,8 @@ $(document).on("click", "#send", function(){
                     innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
                     innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
                     innerHtml += '<input class="uk-input diet-input" id="diet-'+guest[0]+'" type="text" style="margin-top: 10px; display: none" placeholder="Dietary restrictions" />';
-                    innerHtml += '</div>';
+                    innerHtml += '</div><hr/>';
                 }
-                innerHtml += '<hr />';
                 innerHtml += '<br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" /></div>';
                 $('.invitees').html(innerHtml);
                 $("#lookup-searching").hide();
@@ -107,6 +106,47 @@ $(document).on("click", "#send", function(){
             $("#lookup-searching").hide();
             $('#lookup-button').show();
         });
+    $.post("/lookupRehearsalInvitation", user)
+        .success(function(res) {
+            var rehearsalHtml = '<div style="border: 1px solid gray; padding: 25px; margin-top: 20px;"><h2 style="color: inherit; font-family: \'Montaga\', serif;">Rehearsal Dinner</h2><hr/>';
+            console.log(res.party);
+            if (res.party.length > 0) {
+                console.log('found a party');
+                if (res.party[0].length > 3) {
+                    console.log(res.party[0].length);
+                    rehearsalHtml += "<p>You have already RSVP'd. Thanks!</p>";
+                    rehearsalHtml += "<p>If you need to change your RSVP, please send us an <a href='mailto:c.bales@outlook.com'>email</a>.</p>";
+                }
+                else {
+                    for (var i = 0; i < res.party.length; i++)
+                    {
+                        guest = res.party[i];
+                        rehearsalHtml += '<div class="invitation-guest"><input type="text" hidden class="firstname" value='+guest[0]+'>';
+                        rehearsalHtml += '<input type="text" hidden class="lastname" value='+guest[1]+'>';
+                        rehearsalHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
+                        rehearsalHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
+                        rehearsalHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
+                        rehearsalHtml += '<p class="meal-label" id="meal-label-'+guest[0]+'" style="text-align: left;">Meal selection</p>'
+                        rehearsalHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-chicken-'+guest[0]+'" value="chicken"> Chicken</label>  ';
+                        rehearsalHtml += '<label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-beef-'+guest[0]+'" value="beef"> Beef</label>';
+                        rehearsalHtml += '<label><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-pasta-'+guest[0]+'" value="pasta"> Pasta (v)</label>';
+                        rehearsalHtml += '</div><hr/>';
+                    }
+                }
+                $('.rehearsal').html(rehearsalHtml);
+                $('.rehearsal').slideDown('400');
+                $("#send").show();
+            }
+        }).error(function(err){
+            var innerHtml = "<p>Something went wrong when looking up your Rehearsal Dinner Invitation!</p>";
+            innerHtml += "<p>It's not you, it's us. Please send us an <a href='mailto:c.bales@outlook.com'>email</a> and we'll work on getting it fixed for you.";
+            $('.rehearsal').html(innerHtml);
+            $('.rehearsal').slideDown('400');
+            $("#lookup-searching").hide();
+            $('#lookup-button').show();
+        });
+
+
   });
 
   $(document).ready(function() {

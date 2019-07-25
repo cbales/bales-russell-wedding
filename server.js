@@ -199,6 +199,65 @@ app.post('/lookupUser', (req, res) => {
     });
 });
 
+app.post('/lookupRehearsalInvitation', (req, res) => {
+    var {google} = require('googleapis');
+    var OAuth2 = google.auth.OAuth2;
+
+    var key = require('./key.json');
+    var jwtClient = new google.auth.JWT(
+    key.client_email,
+    null,
+    key.private_key,
+    ['https://www.googleapis.com/auth/spreadsheets'], // an array of auth scopes
+    null
+    );
+
+    jwtClient.authorize(function (err, tokens) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        //console.log(tokens);
+
+        var accessToken = tokens.access_token;
+        //console.log(accessToken);
+
+        var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; //Our wedding worksheet, shared with a service account
+        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!A2:E50?access_token=" + accessToken;
+
+        var partyList = [];
+
+        https.get(getUrl, (resp) => {
+            let data = '';
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+            resp.on('end', () => {
+                var x = JSON.parse(data);
+                var users = x['values'];
+
+                users.forEach(user =>
+                {
+                    if (user[0] == req.body.firstName && user[1] == req.body.lastName) {
+                        partyList.push(user);
+
+                        // Now look for other party members
+                        users.forEach(guest => {
+                            if (guest[2] == user[2] && !(user[0] == guest[0] && user[1] == guest[1])) {
+                                partyList.push(guest);
+                            }
+                        });
+                    }
+                });
+                var response = { party: partyList };
+                res.send(response);
+            });
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        }); 
+    });
+});
+
 function getAccessToken(callback) {
     var {google} = require('googleapis');
     var OAuth2 = google.auth.OAuth2;
