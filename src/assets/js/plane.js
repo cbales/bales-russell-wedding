@@ -48,7 +48,7 @@ $(document).on("click", "#send", function(){
                 $("#lookup-searching").hide();
                 $('#lookup-button').show();
             } else {
-                var innerHtml = '<h2 style="color: inherit">Your invitation</h2>';
+                var innerHtml = '<div style="border: 1px solid gray; padding: 25px; margin-top: 20px;"><h2 style="color: inherit; font-family: \'Montaga\', serif;">Your Invitation</h2><hr/>';
                 if (res.rsvpData.length > 0) {
                     innerHtml += "<p>You have already RSVP'd. Thanks!</p>";
                     innerHtml += "<p>If you need to change your RSVP, please send us an <a href='mailto:c.bales@outlook.com'>email</a>.</p>";
@@ -67,7 +67,7 @@ $(document).on("click", "#send", function(){
                     innerHtml += '</div>';
                 }
                 innerHtml += '<hr />';
-                innerHtml += '<br/><br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" />';
+                innerHtml += '<br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" /></div>';
                 $('.invitees').html(innerHtml);
                 $("#lookup-searching").hide();
                 $('#lookup-button').show();
