@@ -1,62 +1,61 @@
 <div class="site-section" id="schedule-section">
-    <ul uk-switcher class="uk-subnav">
-        <li><a href="#">Schedule</a></li>
-        <li><a href="#">Hotel Block</a></li>
-        <li><a href="#">Things to Do</a></li>
-    </ul>
-
-    <ul class="uk-switcher">
-        <li>
-        <p class="uk-text-center">Schedule tentative until closer to the wedding</p>
-        <br />
-            <div uk-grid class="uk-grid-divider">
-                <div class="uk-width-1-2 uk-text-right time-column">
-                    <div class="time">4:00pm</div>
-                    <div class="time-icon"><img src="assets/img/wedding.png"/></div>
-                </div>
-                <div class="uk-width-1-2">
-                    <div class="schedule-item">
-                        <p class="title uk-text-lead">Ceremony</p>
-                        <p class="location">Main Barn</p>
+    <ul uk-accordion>
+        <li class="uk-open">
+            <a class="uk-accordion-title" href="#">Schedule</a>
+            <div class="uk-accordion-content">
+            <p class="uk-text-center">Schedule tentative until closer to the wedding</p>
+            <br />
+                <div uk-grid class="uk-grid-divider">
+                    <div class="uk-width-1-2 uk-text-right time-column">
+                        <div class="time">4:00pm</div>
+                        <div class="time-icon"><img src="assets/img/wedding.png"/></div>
                     </div>
-                </div>
-
-                <div class="uk-width-1-2 uk-text-right time-column">
-                    <div class="time">5:00pm</div>
-                    <div class="time-icon"><img src="assets/img/glasses.png"/></div>
-                </div>
-                <div class="uk-width-1-2">
-                    <div class="schedule-item">
-                        <p class="title uk-text-lead">Cocktail Hour</p>
-                        <p class="location">Log Cabin</p>  
+                    <div class="uk-width-1-2">
+                        <div class="schedule-item">
+                            <p class="title uk-text-lead">Ceremony</p>
+                            <p class="location">Main Barn</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="uk-width-1-2 uk-text-right time-column">
-                    <div class="time">6:00pm</div>
-                    <div class="time-icon"><img src="assets/img/table.png"/></div>
-                </div>
-                <div class="uk-width-1-2">
-                    <div class="schedule-item">
-                        <p class="title uk-text-lead">Dinner</p>
-                        <p class="location">Main Barn</p>
+                    <div class="uk-width-1-2 uk-text-right time-column">
+                        <div class="time">5:00pm</div>
+                        <div class="time-icon"><img src="assets/img/glasses.png"/></div>
                     </div>
-                </div>
+                    <div class="uk-width-1-2">
+                        <div class="schedule-item">
+                            <p class="title uk-text-lead">Cocktail Hour</p>
+                            <p class="location">Log Cabin</p>  
+                        </div>
+                    </div>
 
-                <div class="uk-width-1-2 uk-text-right time-column">
-                    <div class="time">7:30pm</div>
-                    <div class="time-icon"><img src="assets/img/desserts.png"/></div>
-                </div>
-                <div class="uk-width-1-2">
-                    <div class="schedule-item">
-                        <p class="title uk-text-lead">Dessert &amp; Dancing</p>
-                        <p class="location">Main Barn</p>
+                    <div class="uk-width-1-2 uk-text-right time-column">
+                        <div class="time">6:00pm</div>
+                        <div class="time-icon"><img src="assets/img/table.png"/></div>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <div class="schedule-item">
+                            <p class="title uk-text-lead">Dinner</p>
+                            <p class="location">Main Barn</p>
+                        </div>
+                    </div>
+
+                    <div class="uk-width-1-2 uk-text-right time-column">
+                        <div class="time">7:30pm</div>
+                        <div class="time-icon"><img src="assets/img/desserts.png"/></div>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <div class="schedule-item">
+                            <p class="title uk-text-lead">Dessert &amp; Dancing</p>
+                            <p class="location">Main Barn</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </li>
+            </li>
 
         <li>
+            <a class="uk-accordion-title" href="#">Hotel Block</a>
+            <div class="uk-accordion-content">
             <div uk-grid class="uk-grid-match">
                 <div class="uk-width-1-2@m">
                     <div class="uk-card uk-card-body uk-card-secondary">
@@ -94,9 +93,12 @@
                     </div>
                 </div>
             </div>
+        </div>
         </li>
 
         <li>
+                <a class="uk-accordion-title" href="#">Things to Do</a>
+                <div class="uk-accordion-content">
             <div class="uk-grid-small">
                 <p>If you haven't been to Lincoln before, then welcome! These were some of our favorite places to eat, drink, and hang out in the city where we first met.</p>
 
@@ -331,6 +333,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </li>
 </ul>
 
