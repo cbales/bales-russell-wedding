@@ -36,10 +36,6 @@ return res.end('The robots are working on refreshing the website. Try again in a
 });
 
 app.post('/sendRsvp', (req, res) => {
-    //console.log(req);
-    //console.log(req.body.firstName);
-    //console.log("in send rsvp");
-
     var {google} = require('googleapis');
     var OAuth2 = google.auth.OAuth2;
 
@@ -65,7 +61,7 @@ app.post('/sendRsvp', (req, res) => {
 
     var values = '';
 
-    req.body.forEach(guest => {
+    req.body[0].forEach(guest => {
         values+= '["' + guest.firstName + '",'+
         '"' + guest.lastName + '",' +
         '"' + guest.rsvp + '",' +
@@ -101,11 +97,68 @@ app.post('/sendRsvp', (req, res) => {
     // post the data
     post_req.write(body);
     post_req.end();
+
+    // Second PUT for Rehearsal Dinner
+    if (req.body[1].length > 0) {
+        rehearsal_vals = '';
+
+        var guestArr = req.body[1];
+
+        // First, sort the guests by index
+        var newGuests = guestArr.sort(compare);
+
+        var first_index = newGuests[0].guestIndex;
+        var last_index = first_index;
+
+        newGuests.forEach(guest => {
+            rehearsal_vals += '["' + guest.rsvp + '",' +
+            '"' + guest.mealChoice + '"],';
+            last_index = guest.guestIndex;
+        });
+
+        putUrl = "/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!E"+first_index+":F"+last_index+"?valueInputOption=USER_ENTERED&access_token=" + accessToken;
+
+        var rehearsal_body = '{ "values": [' +
+            rehearsal_vals + 
+        ']}';
+
+        var put_options = {
+            host: 'sheets.googleapis.com',
+            port: '443',
+            path: putUrl,
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+    
+        var put_req = https.request(put_options, function(res) {
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+                //throwing away the response!
+            }).on('error', function(err) {
+                console.log(err);
+            });
+        });
+        put_req.on('error', function(e) {
+            console.log("problem with request: " + e.message);
+        });
+    
+        // post the data
+        put_req.write(rehearsal_body);
+        put_req.end();
+    }
     });
     res.send("Success");
 });
 
-
+// Sort by guest index
+function compare(a, b){
+    if (a.guestIndex > b.guestIndex) return 1;
+    if (b.guestIndex > a.guestIndex) return -1;
+    return 0;
+  }
+  
 app.post('/uploadImage', upload.single('file'), (req, res) => {
     res.send("Success!");
 });
@@ -223,7 +276,7 @@ app.post('/lookupRehearsalInvitation', (req, res) => {
         //console.log(accessToken);
 
         var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; //Our wedding worksheet, shared with a service account
-        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!A2:E50?access_token=" + accessToken;
+        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!A2:F50?access_token=" + accessToken;
 
         var partyList = [];
 
