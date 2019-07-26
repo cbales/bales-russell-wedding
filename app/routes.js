@@ -7,4 +7,6 @@ module.exports = function(app) {
     });
 
     app.get('/lookupUser', function(req,res){});
+
+    app.get('/lookupRehearsalInvitation', function(req,res){});
 };
