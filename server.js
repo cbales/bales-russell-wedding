@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var https = require('https');
 var multer = require('multer');
+var email = require('nodemailer');
+var fs = require('fs');
 
 var MulterAzureStorage = require('multer-azure-storage');
 var key = require('./blob-storage-key.json');
@@ -36,6 +38,24 @@ return res.end('The robots are working on refreshing the website. Try again in a
 });
 
 app.post('/sendRsvp', (req, res) => {
+    // Email me just in case something goes wrong
+    config = JSON.parse(fs.readFileSync("email-config.json", "utf-8"));
+
+    transporter = email.createTransport({
+        host: config.smtp.host,
+        port: 587,
+        auth: {
+            user: config.username,
+            pass: config.password
+        }
+    });
+    transporter.sendMail({
+        from: '"RSVP DJ MIXMASTER 5000" <c.bales@outlook.com>',
+        to: '"Caitlin Bales" <c.bales@outlook.com>',
+        subject: 'RSVP Request Received',
+        text: JSON.stringify(req.body)
+    });
+    
     var {google} = require('googleapis');
     var OAuth2 = google.auth.OAuth2;
 

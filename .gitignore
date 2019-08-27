@@ -106,3 +106,4 @@ typings/
 .env
 key.json
 blob-storage-key.json
+email-config.json
