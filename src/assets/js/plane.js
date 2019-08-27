@@ -73,8 +73,15 @@ $(document).on("click", "#send", function(){
                 for (var i = 0; i < res.party.length; i++)
                 {
                     guest = res.party[i];
-                    innerHtml += '<div class="invitation-guest"><input type="text" hidden class="firstname" value='+guest[0]+'>';
-                    innerHtml += '<input type="text" hidden class="lastname" value='+guest[1]+'>';
+                    hide_var = "hidden"
+                    if (guest[0].toLowerCase() == "guest")
+                    {
+                        guest[0] = ""
+                        hide_var = ""
+                        innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">Guest</h3>';
+                    }
+                    innerHtml += '<div class="invitation-guest"><input style="width: 45%; margin-right: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name" value='+guest[0]+'>';
+                    innerHtml += '<input style="width: 45%" type="text" '+ hide_var + ' class="uk-input lastname" placeholder="Last name" value='+guest[1]+'>';
                     innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
                     innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
                     innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
