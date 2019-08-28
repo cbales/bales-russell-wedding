@@ -88,6 +88,17 @@ app.post('/sendRsvp', (req, res) => {
         '"' + guest.dietaryRestrictions + '",' +
         '"' + guest.songRequest +'"],'
     });
+    if (req.body[2] != null) {
+        parent_name = req.body[0][0].firstName + ' ' + req.body[0][0].lastName + '\'s'
+        parent_rsvp = req.body[0][0].rsvp
+        for (var i = 0; i < req.body[2]; i++) {
+            values+= '["' + parent_name + '",'+
+            '"Child",' +
+            '"' + parent_rsvp + '",' +
+            '"",' +
+            '""],' 
+        }
+    }
 
     var body = '{ "values": [' +
         values + 

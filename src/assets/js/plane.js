@@ -22,6 +22,7 @@ $(document).on("click", "#send", function(){
         }
         users.push(user);
     });
+    var children = $('.num-children').val();
     $('.rehearsal-guest').each(function() {
         var name = $($(this).children(".firstname")[0]).val();
         var user = {
@@ -33,7 +34,7 @@ $(document).on("click", "#send", function(){
         }
         rehearsal_users.push(user);
     });
-    var all_users = [users, rehearsal_users];
+    var all_users = [users, rehearsal_users, children];
 
     $.ajax({
         method:"POST",
@@ -79,29 +80,39 @@ $(document).on("click", "#send", function(){
                 for (var i = 0; i < res.party.length; i++)
                 {
                     guest = res.party[i];
-                    hide_var = "hidden"
-                    additional_class = ""
-                    if (guest[0].toLowerCase() == "guest")
+
+                    if (guest[0].toLowerCase() == "children")
                     {
-                        guest[0] = "Guest"
-                        hide_var = ""
-                        additional_class = 'additional-guest'
-                    }
-                    
-                    innerHtml += '<div class="invitation-guest '+ additional_class + '" >'
-                    innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
-                    if (hide_var == ""){
-                        innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name">';
-                    }
+                        innerHtml += '<div class="children" >'
+                        innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">Children</h3>';
+                        innerHtml += '<input class="uk-input uk-align-left uk-form-width-small num-children" type="number" placeholder="#">'
+                        innerHtml += '</div>';
+                    } 
                     else {
-                        innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name" value='+guest[0]+'>';
+                        hide_var = "hidden"
+                        additional_class = ""
+                        if (guest[0].toLowerCase() == "guest")
+                        {
+                            guest[0] = "Guest"
+                            hide_var = ""
+                            additional_class = 'additional-guest'
+                        }
+                        
+                        innerHtml += '<div class="invitation-guest '+ additional_class + '" >'
+                        innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
+                        if (hide_var == ""){
+                            innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name">';
+                        }
+                        else {
+                            innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name" value='+guest[0]+'>';
+                        }
+                        innerHtml += '<input style="width: 48%; margin-bottom: 20px;" type="text" '+ hide_var + ' class="uk-input lastname" placeholder="Last name" value='+guest[1]+'>';
+                        innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
+                        innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
+                        innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
+                        innerHtml += '<input class="uk-input diet-input" id="diet-'+guest[0]+'" type="text" style="margin-top: 10px; display: none" placeholder="Dietary restrictions" />';
+                        innerHtml += '</div><hr/>';
                     }
-                    innerHtml += '<input style="width: 48%; margin-bottom: 20px;" type="text" '+ hide_var + ' class="uk-input lastname" placeholder="Last name" value='+guest[1]+'>';
-                    innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
-                    innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
-                    innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
-                    innerHtml += '<input class="uk-input diet-input" id="diet-'+guest[0]+'" type="text" style="margin-top: 10px; display: none" placeholder="Dietary restrictions" />';
-                    innerHtml += '</div><hr/>';
                 }
                 innerHtml += '<br/><input class="uk-input" id="song-request" type="text" placeholder="Favorite dance song" /></div>';
                 $('.invitees').html(innerHtml);
@@ -115,6 +126,7 @@ $(document).on("click", "#send", function(){
                     // If the main party has RSVP'd, do not show additional guests' RSVP data
                     // We do not currently support this feature
                     $('.additional-guest').hide();
+                    $('.children').hide();
                     var elements = form.elements;
                     for (var i = 0, len = elements.length; i < len; ++i) {
                         elements[i].readOnly = true;
