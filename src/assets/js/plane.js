@@ -6,12 +6,18 @@ $(document).on("click", "#send", function(){
     var users = [];
     var rehearsal_users = [];
     $('.invitation-guest').each(function() {
+        var guestname = $($(this).children(".guestname")[0]).text();
         var name = $($(this).children(".firstname")[0]).val();
+        if (guestname == "Guest "){
+            guest_var = "Guest";
+        } else {
+            guest_var = name;
+        }
         var user = {
             firstName: name,
             lastName: $($(this).children(".lastname")[0]).val(),
             dietaryRestrictions: $($(this).children(".diet-input")[0]).val(),
-            rsvp: $("input[name='rsvp-"+name+"']:checked").val(),
+            rsvp: $("input[name='rsvp-"+guest_var+"']:checked").val(),
             songRequest: $("#song-request").val()
         }
         users.push(user);
@@ -74,15 +80,23 @@ $(document).on("click", "#send", function(){
                 {
                     guest = res.party[i];
                     hide_var = "hidden"
+                    additional_class = ""
                     if (guest[0].toLowerCase() == "guest")
                     {
-                        guest[0] = ""
+                        guest[0] = "Guest"
                         hide_var = ""
-                        innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">Guest</h3>';
+                        additional_class = 'additional-guest'
                     }
-                    innerHtml += '<div class="invitation-guest"><input style="width: 45%; margin-right: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name" value='+guest[0]+'>';
-                    innerHtml += '<input style="width: 45%" type="text" '+ hide_var + ' class="uk-input lastname" placeholder="Last name" value='+guest[1]+'>';
+                    
+                    innerHtml += '<div class="invitation-guest '+ additional_class + '" >'
                     innerHtml += '<h3 class="guestname" style="text-align: left; font-size: 1.2rem;">' + guest[0] + ' ' + guest[1] + '</h3>';
+                    if (hide_var == ""){
+                        innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name">';
+                    }
+                    else {
+                        innerHtml += '<input style="width: 48%; margin-right: 20px; margin-bottom: 20px" type="text" '+ hide_var + ' class="uk-input firstname" placeholder="First name" value='+guest[0]+'>';
+                    }
+                    innerHtml += '<input style="width: 48%; margin-bottom: 20px;" type="text" '+ hide_var + ' class="uk-input lastname" placeholder="Last name" value='+guest[1]+'>';
                     innerHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
                     innerHtml += '<label><input class="uk-radio" type="radio" name="rsvp-'+guest[0]+'" id="rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
                     innerHtml += '<p class="diet-link" id="diet-link-'+guest[0]+'" style="text-align: left; cursor: pointer">+ Dietary restrictions</p>'
@@ -98,6 +112,9 @@ $(document).on("click", "#send", function(){
 
                 if (res.rsvpData.length > 0) {
                     var form = document.getElementById("rsvp-form");
+                    // If the main party has RSVP'd, do not show additional guests' RSVP data
+                    // We do not currently support this feature
+                    $('.additional-guest').hide();
                     var elements = form.elements;
                     for (var i = 0, len = elements.length; i < len; ++i) {
                         elements[i].readOnly = true;
