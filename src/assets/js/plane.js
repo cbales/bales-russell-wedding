@@ -154,7 +154,7 @@ $(document).on("click", "#send", function(){
             .success(function(res) {
                 var rehearsalHtml = '<div style="border: 1px solid gray; padding: 25px; margin-top: 20px;"><h2 style="color: inherit; font-family: \'Montaga\', serif;">Rehearsal Dinner</h2><hr/>';
                 if (res.party.length > 0) {
-                    if (res.party[0].length > 4) {
+                    if (res.party[0].length > 5) {
                         rehearsalHtml += "<p>You have already RSVP'd. Thanks!</p>";
                         rehearsalHtml += "<p>If you need to change your RSVP, please send us an <a href='mailto:c.bales@outlook.com'>email</a>.</p>";
                     }
@@ -184,17 +184,17 @@ $(document).on("click", "#send", function(){
                         for(var i = 0; i < res.party.length; i++)
                         {
                             guest = res.party[i];
-                            if (guest[4] == "yes") {
+                            if (guest[5] == "yes") {
                                 $("#rehearsal-rsvp-yes-"+guest[0]).prop("checked", true);
-                            } else if (guest[4] == "no") {
+                            } else if (guest[5] == "no") {
                                 $("#rehearsal-rsvp-no-"+guest[0]).prop("checked", true);
                             }
-                            if (guest[5] == "chicken") {
+                            if (guest[6] == "chicken") {
                                 $("#meal-chicken-"+guest[0]).prop("checked", true);
-                            } else if (guest[5] == "beef") {
+                            } else if (guest[6] == "beef") {
                                 $("#meal-beef-"+guest[0]).prop("checked", true);
                             }
-                            else if (guest[5] == "pasta") {
+                            else if (guest[6] == "pasta") {
                                 $("#meal-pasta-"+guest[0]).prop("checked", true);
                             }
                         }

@@ -147,7 +147,7 @@ app.post('/sendRsvp', (req, res) => {
             last_index = guest.guestIndex;
         });
 
-        putUrl = "/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!E"+first_index+":F"+last_index+"?valueInputOption=USER_ENTERED&access_token=" + accessToken;
+        putUrl = "/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!F"+first_index+":G"+last_index+"?valueInputOption=USER_ENTERED&access_token=" + accessToken;
 
         var rehearsal_body = '{ "values": [' +
             rehearsal_vals + 
@@ -208,17 +208,10 @@ app.post('/lookupUser', (req, res) => {
     );
 
     jwtClient.authorize(function (err, tokens) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        //console.log(tokens);
-
         var accessToken = tokens.access_token;
-        //console.log(accessToken);
 
         var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; //Our wedding worksheet, shared with a service account
-        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/Guests!A5:C300?access_token=" + accessToken;
+        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/Guests!A5:D300?access_token=" + accessToken;
 
         var partyList = [];
         var rsvpData = [];
@@ -234,7 +227,7 @@ app.post('/lookupUser', (req, res) => {
 
                 users.forEach(user =>
                 {
-                    if (user[0] == req.body.firstName && user[1] == req.body.lastName) {
+                    if ((user[0] == req.body.firstName || user[3] == req.body.firstName) && user[1] == req.body.lastName) {
                         partyList.push(user);
 
                         // Now look for other party members
@@ -307,7 +300,7 @@ app.post('/lookupRehearsalInvitation', (req, res) => {
         //console.log(accessToken);
 
         var sheetId = "1_0IFOD-JbYSKO_lShJd965yIN1Z6guCpktqc46_Np94"; //Our wedding worksheet, shared with a service account
-        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!A2:F50?access_token=" + accessToken;
+        var getUrl = "https://sheets.googleapis.com/v4/spreadsheets/"+sheetId+"/values/RehearsalGuests!A2:G50?access_token=" + accessToken;
 
         var partyList = [];
 
@@ -322,7 +315,7 @@ app.post('/lookupRehearsalInvitation', (req, res) => {
 
                 users.forEach(user =>
                 {
-                    if (user[0] == req.body.firstName && user[1] == req.body.lastName) {
+                    if ((user[0] == req.body.firstName || user[4] == req.body.firstName) && user[1] == req.body.lastName) {
                         partyList.push(user);
 
                         // Now look for other party members
