@@ -52,7 +52,21 @@ $(document).on("click", "#send", function(){
     });
   });
 
-  $(document).on("click", "#lookup-button", function() {
+  $(document).on('keypress',function(e) {
+    // On 'enter'
+    if(e.which == 13) {
+        if ($('.invitees').html().trim() == "") {
+            create_invite();
+        }
+    }
+});
+
+$(document).on("click", "#lookup-button", function() {
+    create_invite();
+});
+
+function create_invite(){
+
       $("#lookup-button").hide();
       $("#lookup-searching").show();
 
@@ -228,7 +242,7 @@ $(document).on("click", "#send", function(){
             $("#lookup-searching").hide();
             $('#lookup-button').show();
         });
-  });
+  }
 
   $(document).ready(function() {
       setTimeout(function() {
