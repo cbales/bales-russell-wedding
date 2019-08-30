@@ -55,6 +55,11 @@ $(document).on("click", "#send", function(){
   $(document).on("click", "#lookup-button", function() {
       $("#lookup-button").hide();
       $("#lookup-searching").show();
+
+      // Start out with a clean slate
+      $('.invitees').html('');
+      $('.rehearsal').html('');
+
     var user = {
         firstName: document.getElementById("firstName").value, 
         lastName: document.getElementById("lastName").value
