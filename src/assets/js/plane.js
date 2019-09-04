@@ -187,13 +187,24 @@ function create_invite(){
                             rehearsalHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="rehearsal-rsvp-'+guest[0]+'" id="rehearsal-rsvp-yes-'+guest[0]+'" value="yes"> I will be attending</label>  ';
                             rehearsalHtml += '<label><input class="uk-radio" type="radio" name="rehearsal-rsvp-'+guest[0]+'" id="rehearsal-rsvp-no-'+guest[0]+'" value="no"> I will not be attending</label>';
                             rehearsalHtml += '<p class="meal-label" id="meal-label-'+guest[0]+'" style="text-align: left;">Meal selection</p>'
-                            rehearsalHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-chicken-'+guest[0]+'" value="chicken"> Chicken</label>  ';
-                            rehearsalHtml += '<label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-beef-'+guest[0]+'" value="beef"> Beef</label>';
-                            rehearsalHtml += '<label><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-pasta-'+guest[0]+'" value="pasta"> Pasta (v)</label>';
+                            rehearsalHtml += ' <label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-chicken-'+guest[0]+'" value="chicken"> Chicken Milan</label>  ';
+                            rehearsalHtml += '<label style="margin-right: 20px"><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-beef-'+guest[0]+'" value="beef"> Prime Rib</label>';
+                            rehearsalHtml += '<label><input class="uk-radio" type="radio" name="meal-'+guest[0]+'" id="meal-pasta-'+guest[0]+'" value="pasta"> Euro Pasta (v)</label>';
                             rehearsalHtml += '</div><hr/>';
                         }
-
                     
+                    rehearsalHtml += '<h3>Rehearsal Dinner Details</h3>';
+                    rehearsalHtml += '<div class="uk-grid"><div class="uk-card uk-card-body-uk-card-secondary uk-grid-1-1" style="background-color: rgb(61,61,61); margin-left: 30px; padding: 10px; width: 100%">';
+                    rehearsalHtml += '<a style="color: inherit" href="http://www.fireworksrestaurant.com/index.html"><p style="font-size: 1.4rem">Fireworks</p></a>';
+                    rehearsalHtml += '<div class="uk-width-1-2" style="display: inline-block"><p style="margin-bottom: 0">Friday, November 1st</p>';
+                    rehearsalHtml += '<p style="margin-bottom: 0">7:00pm</p></div>';
+                    rehearsalHtml += '<div class="uk-width-1-2" style="display: inline-block"><p style="margin-bottom: 0">5750 S 86th Dr</p>';
+                    rehearsalHtml += '<p style="margin-bottom: 0">Lincoln, NE</p></div></div></div>';
+                    rehearsalHtml += '<br />';
+                    rehearsalHtml += '<p style="font-size: 1.4rem">Menu Items</p>';
+                    rehearsalHtml +='<div class="uk-grid"><div class="uk-card uk-card-body uk-card-secondary" style="background-color: rgb(61,61,61); margin-left: 30px; padding: 10px"><h4>Chicken Milan</h4>Parmesan-crusted sautéed chicken with a bruschetta-style topping. Served with roasted red potatoes and sautéed broccoli.</div>';
+                    rehearsalHtml += '<div class="uk-card uk-card-body uk-card-secondary" style="background-color: rgb(61,61,61); margin-left: 30px; margin-top: 20px; padding: 10px"><h4>Prime Rib</h4>Carefully aged, rubbed with spices and slow roasted on tour wood-fired rotisserie. Includes au jus and choice of soup or salad. Served with roasted red potatoes.</div>';
+                    rehearsalHtml += '<div class="uk-card uk-card-body uk-card-secondary" style="background-color: rgb(61,61,61); margin-left: 30px; margin-top: 20px; padding: 10px;"><h4>Euro Pasta</h4>Red peppers, artichoke hearts, and mushrooms tossed with gorgonzola cream sauce, penne, walnuts, and romano. Served with sautéed broccoli.</div></div>';
                     $('.rehearsal').html(rehearsalHtml);
                     $('.rehearsal').slideDown('400');
                     submit_rehearsal = true;
