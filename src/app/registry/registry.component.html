@@ -3,6 +3,20 @@
   <div class="uk-grid-medium uk-text-center" uk-grid>
     <div class="uk-card uk-card-hover uk-card-secondary uk-width-1-3"><a href="https://www.crateandbarrel.com/gift-registry/caitlin-bales-and-darin-russell/r5920551" target="_blank"><img src="../../assets/img/crate-logo.png" alt="Crate &amp; Barrel"></a></div>
     <div class="uk-card uk-card-hover uk-card-secondary uk-width-1-3"><a href="https://www.amazon.com/wedding/caitlin-bales-darin-russell-lincoln-november-2019/registry/31RB2MZG2FS3C" target="_blank"><img src="../../assets/img/amazon-logo.png" alt="Amazon"></a></div>
-    <div class="uk-card uk-card-hover uk-card-secondary uk-width-1-3"><a href="https://donate.nationalparks.org/page/23790/donate/1?chain" target="_blank"><img src="../../assets/img/npf.png" alt="National Park Foundation"></a></div>
+    <div class="uk-card uk-card-hover uk-card-secondary uk-width-1-3" uk-toggle="target: #nat-parks-modal"><img src="../../assets/img/npf.png" alt="National Park Foundation"></div>
   </div>
   </div>
+
+
+  <!-- National Parks modal -->
+<div id="nat-parks-modal" uk-modal class="uk-dark">
+  <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title"></h2>
+      <p class="uk-text-center"><img src="../../assets/img/npf-logo.png" alt="National Park Foundation"></p>
+      <p class="uk-text-center">Thanks for considering donating to the National Park Foundation! We'd love to be able to thank you for your gift, 
+        so please make sure to choose the option "Send an eCard" or "Mail a Letter on My Behalf" when completing Step 3 of the form.
+        You can send emails to c.bales@outlook.com.
+      </p>
+      <a id="donate-link" href="https://donate.nationalparks.org/page/23790/donate/1?chain" target="_blank"><button class="uk-button uk-button-secondary donate-button" type="button">Donate</button></a>
+  </div>
+</div>
