@@ -227,7 +227,27 @@ app.post('/lookupUser', (req, res) => {
 
                 users.forEach(user =>
                 {
-                    if ((user[0] == req.body.firstName || user[3] == req.body.firstName) && user[1] == req.body.lastName) {
+                    first_name = user[0];
+                    last_name = user[1];
+                    alternate_name = user[3];
+                    if (first_name){
+                        first_name = first_name.toLowerCase().trim();
+                    }
+                    if (last_name){
+                        last_name = last_name.toLowerCase().trim();
+                    }
+                    if (alternate_name){
+                        alternate_name = alternate_name.toLowerCase().trim();
+                    }
+                    request_fn = req.body.firstName;
+                    request_ln = req.body.lastName;
+                    if (request_fn) {
+                        request_fn = request_fn.toLowerCase().trim();
+                    }
+                    if (request_ln) {
+                        request_ln = request_ln.toLowerCase().trim();
+                    }
+                    if ((first_name == request_fn || alternate_name == request_fn) && last_name == request_ln) {
                         partyList.push(user);
 
                         // Now look for other party members
@@ -315,7 +335,27 @@ app.post('/lookupRehearsalInvitation', (req, res) => {
 
                 users.forEach(user =>
                 {
-                    if ((user[0] == req.body.firstName || user[4] == req.body.firstName) && user[1] == req.body.lastName) {
+                    first_name = user[0];
+                    last_name = user[1];
+                    alternate_name = user[4];
+                    if (first_name){
+                        first_name = first_name.toLowerCase().trim();
+                    }
+                    if (last_name){
+                        last_name = last_name.toLowerCase().trim();
+                    }
+                    if (alternate_name){
+                        alternate_name = alternate_name.toLowerCase().trim();
+                    }
+                    request_fn = req.body.firstName;
+                    request_ln = req.body.lastName;
+                    if (request_fn) {
+                        request_fn = request_fn.toLowerCase().trim();
+                    }
+                    if (request_ln) {
+                        request_ln = request_ln.toLowerCase().trim();
+                    }
+                    if ((first_name == request_fn ||alternate_name == request_fn) && last_name == request_ln) {
                         partyList.push(user);
 
                         // Now look for other party members
